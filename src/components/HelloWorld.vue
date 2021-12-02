@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <Button text="button" />
+    <Button2 text="button2" @onClickTest="test" />
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -37,6 +38,7 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 import Button from '@/components/atom/Button.vue';
+import Button2 from '@/components/atom/Button2.vue';
 
 @Options({
   props: {
@@ -44,6 +46,12 @@ import Button from '@/components/atom/Button.vue';
   },
   components: {
     Button,
+    Button2,
+  },
+  methods: {
+    test() {
+      console.log('on click');
+    },
   },
 })
 export default class HelloWorld extends Vue {
