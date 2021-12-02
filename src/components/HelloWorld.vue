@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <Button text="button" />
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -35,11 +36,15 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+import Button from '@/components/atom/Button.vue';
 
 @Options({
   props: {
     msg: String
-  }
+  },
+  components: {
+    Button,
+  },
 })
 export default class HelloWorld extends Vue {
   msg!: string
