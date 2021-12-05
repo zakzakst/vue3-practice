@@ -51,6 +51,8 @@ export default defineComponent({
     };
 
     return {
+      saveUser,
+      displayUsers,
       state,
     };
   },
