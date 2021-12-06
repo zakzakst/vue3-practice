@@ -1,7 +1,17 @@
 <template>
   <div>
-    <Button text="test" color="primary" :light="light" />
-    <Button :text="text" light />
+    <Button
+      text="test"
+      color="link"
+      size="small"
+      :full-width="false"
+      :light="light"
+      inverted
+      rounded
+      active
+      @onClick="onClick"
+    />
+    <Button :text="text" color="success" light />
   </div>
 </template>
 
@@ -19,8 +29,14 @@ export default defineComponent({
       light: true,
     });
 
+    // クリック時の挙動設定
+    const onClick = () => {
+      console.log('test');
+    };
+
     return {
       ...toRefs(state),
+      onClick,
     };
   },
 });
