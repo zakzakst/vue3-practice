@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Button text="test" />
-    <Button :text="text" />
+    <Button text="test" color="primary" :light="light" />
+    <Button :text="text" light />
   </div>
 </template>
 
@@ -16,6 +16,7 @@ export default defineComponent({
   setup() {
     const state = reactive({
       text: 'test reactive',
+      light: true,
     });
 
     return {
