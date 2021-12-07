@@ -23,3 +23,8 @@ export const Breadcrumb = {
   separators: ['arrow', 'bullet', 'dot', 'succeeds'],
   sizes: ['small', 'medium', 'large'],
 };
+
+export const Pagination = {
+  alignment: ['centered', 'right'],
+  sizes: ['small', 'medium', 'large'],
+};
