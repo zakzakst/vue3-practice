@@ -99,7 +99,7 @@ export default defineComponent({
     });
 
     // クラス名配列の設定
-    const classes = ref([
+    const classes = ref<string[]>([
       state.colorClass,
       state.lightClass,
       state.sizeClass,

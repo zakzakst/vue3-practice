@@ -12,6 +12,7 @@
       @onClick="onClick"
     />
     <Button :text="text" color="success" light />
+    <Tag text="tag test" color="primary" rounded light to="/" />
     <Tag
       text="tag test"
       color="primary"
@@ -20,9 +21,14 @@
       delete-button
       @onClick="onClick"
       @onClickDelete="onClickDelete"
-      to="/"
     />
     <Progress :value="10" color="primary" size="large" :indeterminate="false" />
+    <Breadcrumb
+      alignment="centered"
+      :items="items"
+      size="large"
+      separator="arrow"
+    />
   </div>
 </template>
 
@@ -31,17 +37,25 @@ import { defineComponent, reactive, toRefs } from 'vue';
 import Button from '@/components/atom/Button.vue';
 import Tag from '@/components/atom/Tag.vue';
 import Progress from '@/components/atom/Progress.vue';
+import Breadcrumb from '@/components/atom/Breadcrumb.vue';
 
 export default defineComponent({
   components: {
     Button,
     Tag,
     Progress,
+    Breadcrumb,
   },
   setup() {
     const state = reactive({
       text: 'test reactive',
       light: true,
+      items: [
+        { to: '/', label: 'Bulma' },
+        { to: '/', label: 'Documentation' },
+        { to: '/', label: 'Components' },
+        { to: '/', label: 'Breadcrumb' },
+      ],
     });
 
     // クリック時の挙動設定
