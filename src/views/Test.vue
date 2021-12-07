@@ -36,6 +36,12 @@
       rounded
       size="large"
     />
+    <Pagination2
+      alignment="centered"
+      :max-num="7"
+      :current-num="4"
+      @onClick="onClickPagination"
+    />
   </div>
 </template>
 
@@ -47,6 +53,7 @@ import Progress from '@/components/atoms/Progress.vue';
 
 import Breadcrumb from '@/components/molecules/Breadcrumb.vue';
 import Pagination from '@/components/molecules/Pagination.vue';
+import Pagination2 from '@/components/molecules/Pagination2.vue';
 
 export default defineComponent({
   components: {
@@ -55,6 +62,7 @@ export default defineComponent({
     Progress,
     Breadcrumb,
     Pagination,
+    Pagination2,
   },
   setup() {
     const state = reactive({
