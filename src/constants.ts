@@ -46,3 +46,9 @@ export const ProgressColors = [
 ];
 
 export const ProgressSizes = ['small', 'normal', 'medium', 'large'];
+
+export const Breadcrumb = {
+  alignment: ['centered', 'right'],
+  separators: ['arrow', 'bullet', 'dot', 'succeeds'],
+  sizes: ['small', 'medium', 'large'],
+};

@@ -52,7 +52,7 @@ export default defineComponent({
     });
 
     // クラス名配列の設定
-    const classes = ref([state.colorClass, state.sizeClass]);
+    const classes = ref<string[]>([state.colorClass, state.sizeClass]);
 
     return {
       ...toRefs(state),

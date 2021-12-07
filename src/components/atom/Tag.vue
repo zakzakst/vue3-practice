@@ -80,7 +80,7 @@ export default defineComponent({
     });
 
     // クラス名配列の設定
-    const classes = ref([
+    const classes = ref<string[]>([
       state.colorClass,
       state.lightClass,
       state.sizeClass,
@@ -91,7 +91,7 @@ export default defineComponent({
     const deleteButtonEl = ref(null);
 
     // クリック時の挙動設定
-    const onClick = (e) => {
+    const onClick = (e: Event) => {
       // クリック要素が削除ボタンの場合、処理を終了
       if (e.target === deleteButtonEl.value) return;
       context.emit('onClick');
