@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, computed, toRefs, ref } from 'vue';
-import { ButtonColors, ButtonSizes } from '../../constants';
+import { Button as Constants } from '../../constants';
 
 export default defineComponent({
   props: {
@@ -16,7 +16,7 @@ export default defineComponent({
       type: String,
       required: false,
       validator: (value: string) => {
-        return ButtonColors.includes(value);
+        return Constants.colors.includes(value);
       },
     },
     light: {
@@ -27,7 +27,7 @@ export default defineComponent({
       type: String,
       required: false,
       validator: (value: string) => {
-        return ButtonSizes.includes(value);
+        return Constants.sizes.includes(value);
       },
     },
     fullWidth: {

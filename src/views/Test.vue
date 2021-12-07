@@ -29,15 +29,24 @@
       size="large"
       separator="arrow"
     />
+    <Pagination
+      alignment="centered"
+      @onClick="onClickPagination"
+      :items="paginationItems"
+      rounded
+      size="large"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue';
-import Button from '@/components/atom/Button.vue';
-import Tag from '@/components/atom/Tag.vue';
-import Progress from '@/components/atom/Progress.vue';
-import Breadcrumb from '@/components/atom/Breadcrumb.vue';
+import Button from '@/components/atoms/Button.vue';
+import Tag from '@/components/atoms/Tag.vue';
+import Progress from '@/components/atoms/Progress.vue';
+
+import Breadcrumb from '@/components/molecules/Breadcrumb.vue';
+import Pagination from '@/components/molecules/Pagination.vue';
 
 export default defineComponent({
   components: {
@@ -45,6 +54,7 @@ export default defineComponent({
     Tag,
     Progress,
     Breadcrumb,
+    Pagination,
   },
   setup() {
     const state = reactive({
@@ -56,6 +66,49 @@ export default defineComponent({
         { to: '/', label: 'Components' },
         { to: '/', label: 'Breadcrumb' },
       ],
+      paginationItems: {
+        startItems: [
+          {
+            key: '1',
+            label: '1',
+            current: false,
+          },
+          {
+            key: '2',
+            label: '2',
+            current: false,
+          },
+        ],
+        centerItems: [
+          {
+            key: '5',
+            label: '5',
+            current: false,
+          },
+          {
+            key: '6',
+            label: '6',
+            current: true,
+          },
+          {
+            key: '7',
+            label: '7',
+            current: false,
+          },
+        ],
+        endItems: [
+          {
+            key: '11',
+            label: '11',
+            current: false,
+          },
+          {
+            key: '12',
+            label: '12',
+            current: false,
+          },
+        ],
+      },
     });
 
     // クリック時の挙動設定
@@ -65,11 +118,15 @@ export default defineComponent({
     const onClickDelete = () => {
       console.log('delete');
     };
+    const onClickPagination = (key: string) => {
+      console.log(key);
+    };
 
     return {
       ...toRefs(state),
       onClick,
       onClickDelete,
+      onClickPagination,
     };
   },
 });
