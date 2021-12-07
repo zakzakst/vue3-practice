@@ -34,3 +34,15 @@ export const TagColors = [
 ];
 
 export const TagSizes = ['normal', 'medium', 'large'];
+
+export const ProgressColors = [
+  // 種類
+  'primary',
+  'link',
+  'info',
+  'success',
+  'warning',
+  'danger',
+];
+
+export const ProgressSizes = ['small', 'normal', 'medium', 'large'];

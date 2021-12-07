@@ -22,6 +22,7 @@
       @onClickDelete="onClickDelete"
       to="/"
     />
+    <Progress :value="10" color="primary" size="large" :indeterminate="false" />
   </div>
 </template>
 
@@ -29,11 +30,13 @@
 import { defineComponent, reactive, toRefs } from 'vue';
 import Button from '@/components/atom/Button.vue';
 import Tag from '@/components/atom/Tag.vue';
+import Progress from '@/components/atom/Progress.vue';
 
 export default defineComponent({
   components: {
     Button,
     Tag,
+    Progress,
   },
   setup() {
     const state = reactive({
