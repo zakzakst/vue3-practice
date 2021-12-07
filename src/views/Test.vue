@@ -12,16 +12,28 @@
       @onClick="onClick"
     />
     <Button :text="text" color="success" light />
+    <Tag
+      text="tag test"
+      color="primary"
+      rounded
+      light
+      delete-button
+      @onClick="onClick"
+      @onClickDelete="onClickDelete"
+      to="/"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue';
 import Button from '@/components/atom/Button.vue';
+import Tag from '@/components/atom/Tag.vue';
 
 export default defineComponent({
   components: {
     Button,
+    Tag,
   },
   setup() {
     const state = reactive({
@@ -31,12 +43,16 @@ export default defineComponent({
 
     // クリック時の挙動設定
     const onClick = () => {
-      console.log('test');
+      console.log('click');
+    };
+    const onClickDelete = () => {
+      console.log('delete');
     };
 
     return {
       ...toRefs(state),
       onClick,
+      onClickDelete,
     };
   },
 });
