@@ -27,7 +27,6 @@
             {{ item.label }}</a
           >
         </li>
-        <li><span class="pagination-ellipsis">&hellip;</span></li>
       </template>
       <!-- 末尾部分 -->
       <template v-if="items.endItems.length">
