@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, computed, toRefs, ref } from 'vue';
-import { TagColors, TagSizes } from '../../constants';
+import { Tag as Constants } from '../../constants';
 
 export default defineComponent({
   props: {
@@ -29,7 +29,7 @@ export default defineComponent({
       type: String,
       required: false,
       validator: (value: string) => {
-        return TagColors.includes(value);
+        return Constants.colors.includes(value);
       },
     },
     light: {
@@ -40,7 +40,7 @@ export default defineComponent({
       type: String,
       required: false,
       validator: (value: string) => {
-        return TagSizes.includes(value);
+        return Constants.sizes.includes(value);
       },
     },
     rounded: {

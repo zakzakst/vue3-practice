@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, computed, toRefs, ref } from 'vue';
-import { ProgressColors, ProgressSizes } from '../../constants';
+import { Progress as Constants } from '../../constants';
 
 export default defineComponent({
   props: {
@@ -23,14 +23,14 @@ export default defineComponent({
       type: String,
       required: false,
       validator: (value: string) => {
-        return ProgressColors.includes(value);
+        return Constants.colors.includes(value);
       },
     },
     size: {
       type: String,
       required: false,
       validator: (value: string) => {
-        return ProgressSizes.includes(value);
+        return Constants.sizes.includes(value);
       },
     },
     indeterminate: {
