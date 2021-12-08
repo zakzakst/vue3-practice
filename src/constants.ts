@@ -39,3 +39,11 @@ export const Message = {
   colors: Colors.types,
   sizes: ['small', 'medium', 'large'],
 };
+
+export const GlobalNav = {
+  items: [
+    { to: '/', label: 'Home' },
+    { to: '/practice01', label: 'Practice01' },
+    { to: '/test', label: 'Test' },
+  ],
+};
