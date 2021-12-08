@@ -61,6 +61,20 @@
     >
       <p>test</p>
     </Message>
+    <Modal :active="modalIsAcrive" @onClickClose="onClick">
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Modal title</p>
+        </header>
+        <section class="modal-card-body">
+          <p>test</p>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success">Save changes</button>
+          <button class="button">Cancel</button>
+        </footer>
+      </div>
+    </Modal>
   </div>
 </template>
 
@@ -76,6 +90,7 @@ import Notification from '@/components/atoms/Notification.vue';
 // import Pagination2 from '@/components/molecules/Pagination2.vue';
 import Tabs from '@/components/molecules/Tabs.vue';
 import Message from '@/components/molecules/Message.vue';
+import Modal from '@/components/molecules/Modal.vue';
 
 export default defineComponent({
   components: {
@@ -89,6 +104,7 @@ export default defineComponent({
     // Pagination2,
     Tabs,
     Message,
+    Modal,
   },
   setup() {
     const state = reactive({
@@ -149,6 +165,7 @@ export default defineComponent({
         { id: '3', label: 'Videos' },
         { id: '4', label: 'Documents' },
       ],
+      modalIsAcrive: false,
     });
 
     // クリック時の挙動設定
