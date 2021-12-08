@@ -75,6 +75,15 @@
         </footer>
       </div>
     </Modal>
+    <Tags
+      color="primary"
+      :items="tagsItems"
+      delete-button
+      rounded
+      light
+      @onClick="onClickTags"
+      @onClickDelete="onClickTagsDelete"
+    />
   </div>
 </template>
 
@@ -91,6 +100,7 @@ import Notification from '@/components/atoms/Notification.vue';
 import Tabs from '@/components/molecules/Tabs.vue';
 import Message from '@/components/molecules/Message.vue';
 import Modal from '@/components/molecules/Modal.vue';
+import Tags from '@/components/molecules/Tags.vue';
 
 export default defineComponent({
   components: {
@@ -105,6 +115,7 @@ export default defineComponent({
     Tabs,
     Message,
     Modal,
+    Tags,
   },
   setup() {
     const state = reactive({
@@ -166,6 +177,11 @@ export default defineComponent({
         { id: '4', label: 'Documents' },
       ],
       modalIsAcrive: false,
+      tagsItems: [
+        { id: '1', text: 'Pictures' },
+        { id: '2', text: 'Music' },
+        { id: '3', text: 'Videos', to: '/' },
+      ],
     });
 
     // クリック時の挙動設定
@@ -181,6 +197,12 @@ export default defineComponent({
     const onClickTabs = (id: string): void => {
       console.log(id);
     };
+    const onClickTags = (id: string): void => {
+      console.log(id);
+    };
+    const onClickTagsDelete = (id: string): void => {
+      console.log('delete' + id);
+    };
 
     return {
       ...toRefs(state),
@@ -188,6 +210,8 @@ export default defineComponent({
       onClickDelete,
       onClickPagination,
       onClickTabs,
+      onClickTags,
+      onClickTagsDelete,
     };
   },
 });
