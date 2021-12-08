@@ -34,3 +34,8 @@ export const Tabs = {
   sizes: ['small', 'medium', 'large'],
   styles: ['boxed', 'toggle', 'toggle-rounded'],
 };
+
+export const Message = {
+  colors: Colors.types,
+  sizes: ['small', 'medium', 'large'],
+};
