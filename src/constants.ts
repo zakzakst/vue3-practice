@@ -28,3 +28,9 @@ export const Pagination = {
   alignment: ['centered', 'right'],
   sizes: ['small', 'medium', 'large'],
 };
+
+export const Tabs = {
+  alignment: ['centered', 'right'],
+  sizes: ['small', 'medium', 'large'],
+  styles: ['boxed', 'toggle', 'toggle-rounded'],
+};

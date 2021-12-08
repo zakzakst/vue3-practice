@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Button
+    <!-- <Button
       text="test"
       color="link"
       size="small"
@@ -41,28 +41,38 @@
       :max-num="7"
       :current-num="4"
       @onClick="onClickPagination"
+    /> -->
+    <Tabs
+      alignment="centered"
+      tab-style="toggle-rounded"
+      size="large"
+      full-width
+      :items="tabsItems"
+      @onClick="onClickTabs"
     />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue';
-import Button from '@/components/atoms/Button.vue';
-import Tag from '@/components/atoms/Tag.vue';
-import Progress from '@/components/atoms/Progress.vue';
+// import Button from '@/components/atoms/Button.vue';
+// import Tag from '@/components/atoms/Tag.vue';
+// import Progress from '@/components/atoms/Progress.vue';
 
-import Breadcrumb from '@/components/molecules/Breadcrumb.vue';
-import Pagination from '@/components/molecules/Pagination.vue';
-import Pagination2 from '@/components/molecules/Pagination2.vue';
+// import Breadcrumb from '@/components/molecules/Breadcrumb.vue';
+// import Pagination from '@/components/molecules/Pagination.vue';
+// import Pagination2 from '@/components/molecules/Pagination2.vue';
+import Tabs from '@/components/molecules/Tabs.vue';
 
 export default defineComponent({
   components: {
-    Button,
-    Tag,
-    Progress,
-    Breadcrumb,
-    Pagination,
-    Pagination2,
+    // Button,
+    // Tag,
+    // Progress,
+    // Breadcrumb,
+    // Pagination,
+    // Pagination2,
+    Tabs,
   },
   setup() {
     const state = reactive({
@@ -117,6 +127,12 @@ export default defineComponent({
           },
         ],
       },
+      tabsItems: [
+        { id: '1', label: 'Pictures', active: true },
+        { id: '2', label: 'Music' },
+        { id: '3', label: 'Videos' },
+        { id: '4', label: 'Documents' },
+      ],
     });
 
     // クリック時の挙動設定
@@ -129,12 +145,16 @@ export default defineComponent({
     const onClickPagination = (key: string) => {
       console.log(key);
     };
+    const onClickTabs = (id: string): void => {
+      console.log(id);
+    };
 
     return {
       ...toRefs(state),
       onClick,
       onClickDelete,
       onClickPagination,
+      onClickTabs,
     };
   },
 });
