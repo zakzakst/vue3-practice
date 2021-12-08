@@ -50,6 +50,9 @@
       :items="tabsItems"
       @onClick="onClickTabs"
     />
+    <Notification color="primary" light @onClickDelete="onClickDelete">
+      <p>test</p>
+    </Notification>
   </div>
 </template>
 
@@ -58,6 +61,7 @@ import { defineComponent, reactive, toRefs } from 'vue';
 // import Button from '@/components/atoms/Button.vue';
 // import Tag from '@/components/atoms/Tag.vue';
 // import Progress from '@/components/atoms/Progress.vue';
+import Notification from '@/components/atoms/Notification.vue';
 
 // import Breadcrumb from '@/components/molecules/Breadcrumb.vue';
 // import Pagination from '@/components/molecules/Pagination.vue';
@@ -69,6 +73,8 @@ export default defineComponent({
     // Button,
     // Tag,
     // Progress,
+    Notification,
+
     // Breadcrumb,
     // Pagination,
     // Pagination2,
