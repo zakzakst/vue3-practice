@@ -34,7 +34,7 @@ export default defineComponent({
   setup() {
     const state = reactive({
       items: Constants.items,
-      isActiveMenu: true,
+      isActiveMenu: false,
     });
 
     // ボタンクリック時のイベント設定

@@ -1,6 +1,8 @@
 <template>
   <GlobalNav />
-  <router-view />
+  <div class="container">
+    <router-view />
+  </div>
 </template>
 
 <script lang="ts">
