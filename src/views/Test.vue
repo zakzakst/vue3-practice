@@ -53,6 +53,14 @@
     <Notification color="primary" light @onClickDelete="onClickDelete">
       <p>test</p>
     </Notification>
+    <Message
+      header-text="メッセージ"
+      size="large"
+      color="link"
+      @onClickDelete="onClickDelete"
+    >
+      <p>test</p>
+    </Message>
   </div>
 </template>
 
@@ -67,6 +75,7 @@ import Notification from '@/components/atoms/Notification.vue';
 // import Pagination from '@/components/molecules/Pagination.vue';
 // import Pagination2 from '@/components/molecules/Pagination2.vue';
 import Tabs from '@/components/molecules/Tabs.vue';
+import Message from '@/components/molecules/Message.vue';
 
 export default defineComponent({
   components: {
@@ -79,6 +88,7 @@ export default defineComponent({
     // Pagination,
     // Pagination2,
     Tabs,
+    Message,
   },
   setup() {
     const state = reactive({
