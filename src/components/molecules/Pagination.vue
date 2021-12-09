@@ -4,8 +4,8 @@
     <a class="pagination-next" @click="onClick('next', $event)">Next</a>
     <ul class="pagination-list">
       <!-- 先頭部分 -->
-      <template v-if="items.startItems.length">
-        <li v-for="item in items.startItems" :key="item.key">
+      <template v-if="data.startItems.length">
+        <li v-for="item in data.startItems" :key="item.key">
           <a
             class="pagination-link"
             :class="{ 'is-current': item.current }"
@@ -17,8 +17,8 @@
         <li><span class="pagination-ellipsis">&hellip;</span></li>
       </template>
       <!-- 中央部分 -->
-      <template v-if="items.centerItems.length">
-        <li v-for="item in items.centerItems" :key="item.key">
+      <template v-if="data.centerItems.length">
+        <li v-for="item in data.centerItems" :key="item.key">
           <a
             class="pagination-link"
             :class="{ 'is-current': item.current }"
@@ -29,9 +29,9 @@
         </li>
       </template>
       <!-- 末尾部分 -->
-      <template v-if="items.endItems.length">
+      <template v-if="data.endItems.length">
         <li><span class="pagination-ellipsis">&hellip;</span></li>
-        <li v-for="item in items.endItems" :key="item.key">
+        <li v-for="item in data.endItems" :key="item.key">
           <a
             class="pagination-link"
             :class="{ 'is-current': item.current }"
@@ -62,7 +62,7 @@ interface Item {
   current: boolean;
 }
 
-interface PaginationItem {
+export interface Data {
   startItems: Item[];
   centerItems: Item[];
   endItems: Item[];
@@ -70,8 +70,8 @@ interface PaginationItem {
 
 export default defineComponent({
   props: {
-    items: {
-      type: Object as PropType<PaginationItem>,
+    data: {
+      type: Object as PropType<Data>,
       required: true,
     },
     alignment: {
