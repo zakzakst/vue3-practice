@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, computed } from 'vue';
-import userRowComponent, { User } from '@/components/UserRow.vue';
+import userRowComponent, { User } from '@/components/practice/UserRow.vue';
 
 export default defineComponent({
   components: {

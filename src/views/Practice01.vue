@@ -38,29 +38,65 @@
     <div>
       <Button text="ユーザーを登録する" color="primary" @onClick="saveUser" />
     </div>
+    <hr />
+    <!-- ユーザーリスト -->
+    <div class="mt-4">
+      <p class="is-size-3">リストをニックネームで絞り込む</p>
+      <div class="field mt-4">
+        <div class="control">
+          <input v-model="nicknameFilter" class="input" type="email" />
+        </div>
+      </div>
+      <table v-if="filteredUsers.length" class="table">
+        <thead>
+          <tr>
+            <th>ニックネーム</th>
+            <th>メールアドレス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <UserRow
+            v-for="(user, index) in filteredUsers"
+            :key="index"
+            :user="user"
+          />
+        </tbody>
+      </table>
+    </div>
+    <!-- ユーザー表示 -->
+    <div class="mt-4">
+      <Button
+        text="ユーザーを表示する"
+        color="primary"
+        @onClick="displayUser"
+      />
+    </div>
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, toRefs } from 'vue';
+import { defineComponent, reactive, ref, toRefs, computed } from 'vue';
 import Button from '@/components/atoms/Button.vue';
-
-interface User {
-  nickname: string;
-  email: string;
-}
+import UserRow, { User } from '@/components/practice/UserRow.vue';
 
 export default defineComponent({
   components: {
     Button,
+    UserRow,
   },
 
   setup() {
+    const users = ref<User[]>([]);
     const state = reactive({
       nickname: '',
       email: '',
+      nicknameFilter: '',
+      filteredUsers: computed(() => {
+        return users.value.filter((user) => {
+          return user.nickname.includes(state.nicknameFilter);
+        });
+      }),
     });
-    const users = ref<User[]>([]);
 
     const saveUser = () => {
       if (!state.nickname || !state.email) return;
@@ -79,10 +115,19 @@ export default defineComponent({
       state.email = '';
     };
 
+    const displayUser = () => {
+      let message = `${users.value.length}人のユーザーが登録されています。`;
+      for (const user of users.value) {
+        message += `\n${user.nickname}`;
+      }
+      alert(message);
+    };
+
     return {
       ...toRefs(state),
       users,
       saveUser,
+      displayUser,
     };
   },
 });
