@@ -59,6 +59,7 @@
             v-for="(user, index) in filteredUsers"
             :key="index"
             :user="user"
+            @onUpdate="updateUser($event, user)"
           />
         </tbody>
       </table>
@@ -123,11 +124,16 @@ export default defineComponent({
       alert(message);
     };
 
+    const updateUser = (val, user) => {
+      user.nickname = val;
+    };
+
     return {
       ...toRefs(state),
       users,
       saveUser,
       displayUser,
+      updateUser,
     };
   },
 });
