@@ -84,6 +84,7 @@
       @onClick="onClickTags"
       @onClickDelete="onClickTagsDelete"
     />
+    <Table bordered striped hover-able full-width :data="tableData" />
   </div>
 </template>
 
@@ -93,6 +94,7 @@ import { defineComponent, reactive, toRefs } from 'vue';
 // import Tag from '@/components/atoms/Tag.vue';
 // import Progress from '@/components/atoms/Progress.vue';
 import Notification from '@/components/atoms/Notification.vue';
+import Table, { Data as TableData } from '@/components/atoms/Table.vue';
 
 // import Breadcrumb from '@/components/molecules/Breadcrumb.vue';
 // import Pagination from '@/components/molecules/Pagination.vue';
@@ -108,6 +110,7 @@ export default defineComponent({
     // Tag,
     // Progress,
     Notification,
+    Table,
 
     // Breadcrumb,
     // Pagination,
@@ -182,6 +185,22 @@ export default defineComponent({
         { id: '2', text: 'Music' },
         { id: '3', text: 'Videos', to: '/' },
       ],
+      tableData: {
+        head: [
+          ['見出し1-1', '見出し1-2'],
+          ['見出し2-1', '見出し2-2'],
+        ],
+        body: [
+          ['test1', 'test'],
+          ['test2', 'test'],
+          ['test3', 'test'],
+          ['test4', 'test'],
+        ],
+        foot: [
+          ['末尾1-1', '末尾1-2'],
+          ['末尾2-1', '末尾2-2'],
+        ],
+      } as TableData,
     });
 
     // クリック時の挙動設定
