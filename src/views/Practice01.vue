@@ -76,9 +76,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs, computed } from 'vue';
+import { defineComponent, reactive, toRefs, computed, ComputedRef } from 'vue';
 import Button from '@/components/atoms/Button.vue';
 import UserRow, { User } from '@/components/practice/UserRow.vue';
+
+interface State {
+  users: User[];
+  nickname: string;
+  email: string;
+  nicknameFilter: string;
+  filteredUsers: ComputedRef<User[]>;
+}
 
 export default defineComponent({
   components: {
@@ -88,12 +96,24 @@ export default defineComponent({
 
   setup() {
     // const users = ref<User[]>([]);
-    const state = reactive({
-      users: [] as User[],
+    // const state = reactive({
+    //   users: [] as User[],
+    //   nickname: '',
+    //   email: '',
+    //   nicknameFilter: '',
+    //   filteredUsers: computed((): User[] => {
+    //     // return users.value.filter((user) => {
+    //     return state.users.filter((user) => {
+    //       return user.nickname.includes(state.nicknameFilter);
+    //     });
+    //   }),
+    // });
+    const state = reactive<State>({
+      users: [],
       nickname: '',
       email: '',
       nicknameFilter: '',
-      filteredUsers: computed(() => {
+      filteredUsers: computed((): User[] => {
         // return users.value.filter((user) => {
         return state.users.filter((user) => {
           return user.nickname.includes(state.nicknameFilter);
