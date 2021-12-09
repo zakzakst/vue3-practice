@@ -1,14 +1,13 @@
 <template>
   <tr>
     <td>
-      <span>{{ user.nickname }}</span>
-      <!-- <input
-        v-show="editable"
+      <input
+        v-if="editable"
         ref="editNickname"
-        v-bind="inputVal"
         @blur="editable = false"
         type="text"
-      /> -->
+      />
+      <span v-else @click="edit">{{ user.nickname }}</span>
     </td>
     <td>{{ user.email }}</td>
   </tr>
@@ -29,24 +28,22 @@ export default defineComponent({
       required: true,
     },
   },
-  // setup() {
-  //   // リアクティブデータの設定
-  //   const editable = ref(false);
-  //   // TODO: 「ref(null)」でDOMの参照ができるはずだが、上手くいかない
-  //   const editNickname = ref(null);
+  setup() {
+    const editable = ref(false);
+    const editNickname = ref<HTMLInputElement>();
 
-  //   const edit = () => {
-  //     editable.value = true;
-  //     nextTick(() => {
-  //       // editNickname.value.focus();
-  //     });
-  //   };
+    const edit = () => {
+      editable.value = true;
+      nextTick(() => {
+        editNickname.value?.focus();
+      });
+    };
 
-  //   return {
-  //     editable,
-  //     editNickname,
-  //     edit,
-  //   };
-  // },
+    return {
+      editable,
+      editNickname,
+      edit,
+    };
+  },
 });
 </script>
