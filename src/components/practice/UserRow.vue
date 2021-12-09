@@ -41,7 +41,7 @@ export default defineComponent({
       editable: false,
       editVal: '',
     });
-    const editNickname = ref<HTMLInputElement>();
+    const editNickname = ref<HTMLInputElement | null>(null);
 
     const edit = () => {
       state.editVal = props.user.nickname;

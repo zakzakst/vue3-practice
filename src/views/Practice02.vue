@@ -76,70 +76,56 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs, computed } from 'vue';
+import { Options, Vue } from 'vue-class-component';
 import Button from '@/components/atoms/Button.vue';
-import UserRow, { User } from '@/components/practice/UserRow.vue';
+import UserRow, { User } from '@/components/practice/UserRow2.vue';
 
-export default defineComponent({
+@Options({
   components: {
     Button,
     UserRow,
   },
+})
+export default class Practice02 extends Vue {
+  private users: User[] = [];
+  private nickname = '';
+  private email = '';
+  private nicknameFilter = '';
 
-  setup() {
-    // const users = ref<User[]>([]);
-    const state = reactive({
-      users: [] as User[],
-      nickname: '',
-      email: '',
-      nicknameFilter: '',
-      filteredUsers: computed(() => {
-        // return users.value.filter((user) => {
-        return state.users.filter((user) => {
-          return user.nickname.includes(state.nicknameFilter);
-        });
-      }),
+  private get filteredUsers() {
+    return this.users.filter((user) => {
+      return user.nickname.includes(this.nicknameFilter);
     });
+  }
 
-    const saveUser = () => {
-      if (!state.nickname || !state.email) return;
-      // フォームの値からユーザーデータを追加
-      const user = {
-        nickname: state.nickname,
-        email: state.email,
-      };
-      // users.value.push(user);
-      state.users.push(user);
-      // メッセージを表示
-      alert(
-        `ニックネーム：${state.nickname}、メールアドレス：${state.email}で登録しました。`
-      );
-      // フォームの初期化
-      state.nickname = '';
-      state.email = '';
+  private saveUser() {
+    if (!this.nickname || !this.email) return;
+    // フォームの値からユーザーデータを追加
+    const user = {
+      nickname: this.nickname,
+      email: this.email,
     };
+    // users.value.push(user);
+    this.users.push(user);
+    // メッセージを表示
+    alert(
+      `ニックネーム：${this.nickname}、メールアドレス：${this.email}で登録しました。`
+    );
+    // フォームの初期化
+    this.nickname = '';
+    this.email = '';
+  }
 
-    const displayUsers = () => {
-      // let message = `${users.value.length}人のユーザーが登録されています。`;
-      let message = `${state.users.length}人のユーザーが登録されています。`;
-      // for (const user of users.value) {
-      for (const user of state.users) {
-        message += `\n${user.nickname}`;
-      }
-      alert(message);
-    };
+  private displayUsers() {
+    let message = `${this.users.length}人のユーザーが登録されています。`;
+    for (const user of this.users) {
+      message += `\n${user.nickname}`;
+    }
+    alert(message);
+  }
 
-    const updateUser = (val, user) => {
-      user.nickname = val;
-    };
-
-    return {
-      ...toRefs(state),
-      // users,
-      saveUser,
-      displayUsers,
-      updateUser,
-    };
-  },
-});
+  private updateUser(val: string, user: User) {
+    user.nickname = val;
+  }
+}
 </script>
