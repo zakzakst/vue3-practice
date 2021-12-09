@@ -20,7 +20,7 @@ import { defineComponent, PropType } from 'vue';
 import { Tag as Constants } from '../../constants';
 import Tag from '@/components/atoms/Tag.vue';
 
-interface Item {
+export interface Item {
   id: string;
   text: string;
   to?: string;

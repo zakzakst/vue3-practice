@@ -23,7 +23,7 @@ import {
 } from 'vue';
 import { Tabs as Constants } from '../../constants';
 
-interface Item {
+export interface Item {
   id: string;
   label: string;
   active?: boolean;

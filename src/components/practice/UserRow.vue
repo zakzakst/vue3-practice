@@ -3,8 +3,9 @@
     <td>
       <input
         v-if="editable"
+        v-model="editVal"
         ref="editNickname"
-        @blur="editable = false"
+        @blur="update"
         type="text"
       />
       <span v-else @click="edit">{{ user.nickname }}</span>
@@ -14,7 +15,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, nextTick, PropType } from 'vue';
+import {
+  defineComponent,
+  reactive,
+  ref,
+  nextTick,
+  PropType,
+  toRefs,
+} from 'vue';
 
 export interface User {
   nickname: string;
@@ -28,21 +36,41 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {
-    const editable = ref(false);
-    const editNickname = ref<HTMLInputElement>();
+  setup(props, context) {
+    const state = reactive({
+      editable: false,
+      editVal: '',
+    });
+    const editNickname = ref<HTMLInputElement | null>(null);
 
     const edit = () => {
-      editable.value = true;
+      state.editVal = props.user.nickname;
+      state.editable = true;
       nextTick(() => {
         editNickname.value?.focus();
       });
     };
 
+    const update = () => {
+      if (!state.editVal) {
+        alert('ニックネームが空白です。');
+        editClear();
+        return;
+      }
+      context.emit('onUpdate', state.editVal);
+      editClear();
+    };
+
+    const editClear = () => {
+      state.editable = false;
+      state.editVal = '';
+    };
+
     return {
-      editable,
+      ...toRefs(state),
       editNickname,
       edit,
+      update,
     };
   },
 });

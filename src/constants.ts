@@ -44,6 +44,7 @@ export const GlobalNav = {
   items: [
     { to: '/', label: 'Home' },
     { to: '/practice01', label: 'Practice01' },
+    { to: '/practice02', label: 'Practice02' },
     { to: '/test', label: 'Test' },
   ],
 };

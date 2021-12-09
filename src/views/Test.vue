@@ -23,25 +23,25 @@
       @onClickDelete="onClickDelete"
     />
     <Progress :value="10" color="primary" size="large" :indeterminate="false" />
-    <Breadcrumb
-      alignment="centered"
-      :items="items"
-      size="large"
-      separator="arrow"
-    />
-    <Pagination
-      alignment="centered"
-      @onClick="onClickPagination"
-      :items="paginationItems"
-      rounded
-      size="large"
-    />
     <Pagination2
       alignment="centered"
       :max-num="7"
       :current-num="4"
       @onClick="onClickPagination"
     /> -->
+    <Pagination
+      alignment="centered"
+      @onClick="onClickPagination"
+      :data="paginationData"
+      rounded
+      size="large"
+    />
+    <Breadcrumb
+      alignment="centered"
+      :items="BreadcrumbItems"
+      size="large"
+      separator="arrow"
+    />
     <Tabs
       alignment="centered"
       tab-style="toggle-rounded"
@@ -84,6 +84,7 @@
       @onClick="onClickTags"
       @onClickDelete="onClickTagsDelete"
     />
+    <Table bordered striped hover-able full-width :data="tableData" />
   </div>
 </template>
 
@@ -93,14 +94,19 @@ import { defineComponent, reactive, toRefs } from 'vue';
 // import Tag from '@/components/atoms/Tag.vue';
 // import Progress from '@/components/atoms/Progress.vue';
 import Notification from '@/components/atoms/Notification.vue';
+import Table, { Data as TableData } from '@/components/atoms/Table.vue';
 
-// import Breadcrumb from '@/components/molecules/Breadcrumb.vue';
-// import Pagination from '@/components/molecules/Pagination.vue';
+import Breadcrumb, {
+  Item as BreadcrumbItem,
+} from '@/components/molecules/Breadcrumb.vue';
+import Pagination, {
+  Data as PaginationData,
+} from '@/components/molecules/Pagination.vue';
 // import Pagination2 from '@/components/molecules/Pagination2.vue';
-import Tabs from '@/components/molecules/Tabs.vue';
+import Tabs, { Item as TabsItem } from '@/components/molecules/Tabs.vue';
 import Message from '@/components/molecules/Message.vue';
 import Modal from '@/components/molecules/Modal.vue';
-import Tags from '@/components/molecules/Tags.vue';
+import Tags, { Item as TagsItem } from '@/components/molecules/Tags.vue';
 
 export default defineComponent({
   components: {
@@ -108,9 +114,10 @@ export default defineComponent({
     // Tag,
     // Progress,
     Notification,
+    Table,
 
-    // Breadcrumb,
-    // Pagination,
+    Breadcrumb,
+    Pagination,
     // Pagination2,
     Tabs,
     Message,
@@ -121,13 +128,13 @@ export default defineComponent({
     const state = reactive({
       text: 'test reactive',
       light: true,
-      items: [
+      BreadcrumbItems: [
         { to: '/', label: 'Bulma' },
         { to: '/', label: 'Documentation' },
         { to: '/', label: 'Components' },
         { to: '/', label: 'Breadcrumb' },
-      ],
-      paginationItems: {
+      ] as BreadcrumbItem[],
+      paginationData: {
         startItems: [
           {
             key: '1',
@@ -169,19 +176,35 @@ export default defineComponent({
             current: false,
           },
         ],
-      },
+      } as PaginationData,
       tabsItems: [
         { id: '1', label: 'Pictures', active: true },
         { id: '2', label: 'Music' },
         { id: '3', label: 'Videos' },
         { id: '4', label: 'Documents' },
-      ],
+      ] as TabsItem[],
       modalIsAcrive: false,
       tagsItems: [
         { id: '1', text: 'Pictures' },
         { id: '2', text: 'Music' },
         { id: '3', text: 'Videos', to: '/' },
-      ],
+      ] as TagsItem[],
+      tableData: {
+        head: [
+          ['見出し1-1', '見出し1-2'],
+          ['見出し2-1', '見出し2-2'],
+        ],
+        body: [
+          ['test1', 'test'],
+          ['test2', 'test'],
+          ['test3', 'test'],
+          ['test4', 'test'],
+        ],
+        foot: [
+          ['末尾1-1', '末尾1-2'],
+          ['末尾2-1', '末尾2-2'],
+        ],
+      } as TableData,
     });
 
     // クリック時の挙動設定

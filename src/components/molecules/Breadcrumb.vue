@@ -23,7 +23,7 @@ import {
 } from 'vue';
 import { Breadcrumb as Constants } from '../../constants';
 
-interface Item {
+export interface Item {
   to: string;
   label: string;
 }
