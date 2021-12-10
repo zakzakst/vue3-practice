@@ -18,7 +18,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { Tag as Constants } from '../../constants';
-import Tag from '@/components/atoms/Tag.vue';
+import Tag from '../../components/atoms/Tag.vue';
 
 export interface Item {
   id: string;
